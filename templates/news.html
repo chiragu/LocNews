@@ -1,0 +1,68 @@
+    <!DOCTYPE html>
+    <!--
+    LocNews
+    Author: Chirag Uttamsingh
+    Date: 11/24/2018
+
+    Shows headline news by location (currently country)
+
+    Powered by NewsAPI.org
+    -->
+    <html>
+
+    <head>
+    <title>LocNews</title>
+
+    <!--My Styles -->
+    <link rel = "stylesheet" type = "text/css" href = "{{url_for('static', filename='styles/news.css')}}" />
+
+    <!--Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="icon" href="{{url_for('static', filename='favicon.ico')}}" type="image/x-icon">
+    </head>
+
+    <!-- Body Section -->
+    <body>
+        <div class="content">
+    <h2 class="pageTitle">LocNews: Local News Simplified</h2>
+        <!--Loop through the news articles and print one at a time (Dont with Jinja Template)-->
+        {% for article in news %}
+            <a href="{{article.url}}">
+                <div class="media content-section">
+                <div class="media-body">
+                        <table>
+                                <tr>
+                                    <td rowspan="2">
+                                    {% if article.urlToImage %}
+                                            <img class=".images" src="{{article.urlToImage}}" alt="News Image" height ="80" width ="80" hspace="20" >
+                                        {% endif %}
+                                    </td>
+
+                                    <td><h3 class="article-title">{{article.title}}</h3></td>
+                                </tr>
+                                <tr>
+                                        <td>{% if article.description %}
+                                                <p>{{article.description}}</p>
+                                                {% endif %}
+                                        </td> 
+                                </tr>
+                                </table>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+
+        <!-- Attribution link-->
+        <div class= "footer-copyright text-center py-3">
+        <p>Powered by <a href="https://newsapi.org/">NewsAPI</a></p>
+        </div>
+    </div>
+    </body>
+    </html>
