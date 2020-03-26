@@ -10,4 +10,4 @@ Written in the Flask Framework with Python.
 
 ## Authors
 
-* **Chirag Uttamsingh**
+* **Chirag U**
