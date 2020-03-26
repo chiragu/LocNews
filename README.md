@@ -8,8 +8,6 @@ API Key needs to be added to locnews.py
 
 Written in the Flask Framework with Python.
 
-Live at: http://gredisoft.com/news
-
 ## Authors
 
 * **Chirag Uttamsingh**
